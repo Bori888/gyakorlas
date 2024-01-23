@@ -1,0 +1,56 @@
+from Szamitogep import Szamitogep
+def paldanyositas():
+    peldany_1 = Szamitogep("win", 32)
+    peldany_2 = Szamitogep("mac", 16)
+    peldany_3 = Szamitogep("win", 16)
+    szamitogepek = []
+    szamitogepek.append(peldany_1)
+    szamitogepek.append(peldany_2)
+    szamitogepek.append(peldany_3)
+    return szamitogepek
+
+def kiiras(szamitogepek):
+    for i in range(len(szamitogepek)):
+        oprsz = szamitogepek[i].oprsz
+        ram = szamitogepek[i].ram
+        print(f"oprendszer:{oprsz} ram: ({ram})")
+
+def osszegzes_tetele(szamitogepek):
+    print("Átlag: ", end="")
+    gyujto = 0
+    for i in range(len(szamitogepek)):
+        gyujto += szamitogepek[i].ram
+    print(f"{round(gyujto/len(szamitogepek),3)}")
+
+
+def maximum_kivalaszt(szamitogepek):
+    print("Legtöbb ramot tartalmazó oprendszer: ", end="")
+    index = 0
+    for i in range(len(szamitogepek)):
+        if szamitogepek[i].ram > szamitogepek[index].ram:
+            index = i
+    oprsz = szamitogepek[index].oprsz
+    print(f"{oprsz}")
+def megszamlalas_tetel(szamitogepek):
+
+    print("Hány  Windows gépünk van? ", end="")
+    ures = 0
+    for i in range(len(szamitogepek)):
+        if szamitogepek[i].oprsz == "win":
+            ures +=1
+
+    print(f"{ures} db Windowzos gépünk van")
+
+
+def eldontes_tetel(szamitogepek):
+    vizsgalt_ram = 22
+    print(f"Van-e {vizsgalt_ram} GB-nal nagyobb Windows? ", end="")
+
+    ivh = False
+    for i in range(len(szamitogepek)):
+        if szamitogepek[i].ram > vizsgalt_ram and szamitogepek[i].oprsz == "win":
+            ivh = True
+    if ivh == True:
+        print("Van ilyen gép")
+    else:
+        print("Nincs ilyen gép")

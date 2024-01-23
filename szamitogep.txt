@@ -1,0 +1,3 @@
+Szamitogep("win", 32);
+Szamitogep("mac", 16);
+Szamitogep("win", 16)
